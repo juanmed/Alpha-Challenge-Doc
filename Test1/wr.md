@@ -1,3 +1,16 @@
+#TODO
+
+|Question No|Topic|Detail|
+|---|---|---|
+|1|State Estimation Challenges| Describe what are the technological challenges regarding state estimation|
+|2|Our State Estimation Approach|Describe what is our team's state estimation approach|
+|3|Simulator and control algorithm|Describe how simulator will be used in regard to control algorithm|
+|4|Details| Add details on research grants and industry collaboration|
+|5|All pending||
+|NA|Review of answers by team||
+|NA|||
+
+
 ## 1) What are the big technical challenges an autonomous drone needs to overcome in order to beat a human pilot flying the same drone? Why?
 
 The challenges comprise various areas and can be understood from a race perspective. Before the race, human and autonomous drone (simply “drone” herein after) need some practice runs. This challenge is avoided if the drone is given the precise pose of all gates before the race. Otherwise, the challenge for the drone here is “accurate mapping” of the gates pose with respect to an inertial frame, by doing practice runs. If the mapping error is big, this errors will  propagate to motion planning, which if not corrected will lead to missing gates, or if corrected will lead to non time-optimal paths. After a map is built, and the drones start to race, the next challenge is motion planning. This can be divided in two challenges: perception, planning and computation. The challenge in perception is for the drone to be able to accurately detect where the gates are as it flies through the race track, using a camera and other sensors. Because the speed are very high, a fast and sophisticated camera is necessary. Assuming such a camera is available, the next challenge is having enough computational power on-board and fast algorithms to process the input from the camera to accurately estimate where obstacles (walls, objects, other drones, etc) and gates are. When this computation is done, the drone now can compute a trajectory that takes it from its current position to the next gate, in the minimum possible time. All this while flying! If a successful trajectory can be computed, the next challenge is to actually fly through that trajectory, or the tracking control challenge. This challenge also comes with its own computation challenge. At high speeds, aerodynamic effects, propeller flapping, vibration etc are of considerable magnitude. The controller needs to compensate for this dynamics in order to track the computed trajectory, or otherwise will end up crashing or missing the next gate. This effects are however non-linear and challenges in modeling and controlling are outstanding. Moreover, as if a velocity of 30m/s was not enough, the rotation dynamics are even faster (>200degree/s). This implies that the control inputs must be computed at very high speeds. Again, having enough on-board computational power and fast algorithms is imperative.  THE STATE ESTIMATION CHALLENGE.
@@ -27,11 +40,18 @@ In short, the availability of ground truth and flexibility to change the paramet
 
 Regarding our control algorithms, the simulator, together with the ROS nodes provided for communication, will be exploited as a tool to asses its tracking performance. 
 
-Our estimation algorithms will be highly benefited from the simulator. Since drone pose estimation algorithms will fuse information from several sensors, the sensor fusion algorithms for state estimation can be thoroughly tested. First, ground-truth data and the possibility to add noise to sensors provides means to asses state estimation error for several noise levels. Since the controller works on state estimation data provided by the estimator, this analysis is critical. Second, estimation error and drift will be corrected by gate pose estimation data from the perception system. This sensor fusion algorithm is crucial, as solves the drift and error issue characteristic of long-term state estimation using IMU data only. 
+Our estimation algorithms will be highly benefited from the simulator. Since drone pose estimation algorithms will fuse information from several sensors, these algorithms will be thoroughly tested. First, ground-truth data availability and the possibility to add noise to sensors provides means to asses state estimation error for several noise levels. Since the controller works on state estimation data provided by the estimator, this analysis is critical. Second, estimation error and drift, characteristic of long-term state estimation algorithms using IMU only,  will be corrected by gate pose estimation data from the perception system. 
 
 Finally, 
 
 ## 4) What support, resources, and tools does your team plan to use for the competition to supplement the hardware, software, and training provided? How do you plan to support necessary travel should you proceed in the competition? Please include any hardware, software, people, data, mentoring, sponsorships, etc. *
+
+We are a group of Mechanical Engineering Graduate School at Sungkyunkwan University. We are doing research on autonomous flying robots at the Robotics and Intelligent Systems Laboratory -RISE Lab- lead by Prof. Dr. Hyung Pil Moon. The autonomous flying robots area is a line of research in this lab. Thus, we count with access to a host of tools present in a robotics lab, and for drone research specifically: Motion Tracking Hardware and Software from Vicon Company, 4 different quadrotors and hexarotors with integrated sensors and computers for research, along with their tools and parts (batteries, monocular cameras, infrared sensors, GPS, barometers, etc), several Nvidia Jetson TX2 development boards, access to computers with Nvidia Titan X Pascal GPUs for neural network training, 
+
+Financing for travelling expenses, extra sw/hw tools, is secured by several research grants and industry-collaboration projects being developed internally by the lab. Among the research grants obtaines so far, BK+ Project, LINC Program have the greater importance
+
+On the industry-collaboration side, we are in talks with a South Korean company developing services with drones. 
+
 
 SKKU
 BK+ Project
