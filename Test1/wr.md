@@ -43,6 +43,7 @@ If a successful trajectory was computed, the next challenge is to actually fly t
 
 
 
+
 ## 2) Describe your team’s planned technical approach to AlphaPilot. Why do you think your team could win with this approach?
 
 ### Race Track Mapping Challenge Approach
