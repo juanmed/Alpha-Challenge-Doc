@@ -62,3 +62,27 @@ USA Company
 ## 5) What do you see as the biggest challenges specific to your team that you will face during the AlphaPilot competition? What is your initial plan for overcoming this challenge? For example: missing skills, financial challenges, team cohesiveness, time commitment, etc. *
 
 Missing skills
+
+
+## Trajectory
+
+
+Trajectory Generation.
+
+1. Chaojie Zhang, Trajectory Generation for Aircraft Based on Differential Flatness and Spline Theory.  ICINA 
+In this paper, they make trajectory by using differential flatness spline theory. The spline is based on Bernstein basis Bezier curve. In future, They will use other curves such as B-spline. 
+
+2. Zhen He … A Time-optimal Trajectory Generation Algorithm for Quadrotors with Various States Constraints. ICARM
+3. Mellinger D, Kumar V. Minimum Snap Trajectory Generation and Control for Quadrotors in Proceedings of the IEEE international Conference Robotics and Automation. 
+
+In paper 2 and 3, trajectory is calculated by dividing many segments. By minimizing cost function(or objective function), trajectory can be time optimal. 
+
+4. E.Kahale. Minimum Time Reference Trajectroy Generation for an Autonomous Quadrotor. ICUAS
+The trajectory generation algorithm proposed in this paper is based on the optimality notion.
+
+Paper 1 seems easier than other things but has no simulation results.
+Paper 2,3 would be more time-optimal.
+They all use nonlinear programming.
+If I can use nonlinear programming in Matlab, can simulate some trajectory.
+
+
