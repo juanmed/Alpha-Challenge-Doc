@@ -57,8 +57,7 @@ In order to map a DRL style race track, it is necessary to do it by flying the d
 ### Perception and Computation Challenges Approach
 We will be given 60fps cameras and onboard IMU, so the sensor limitation is diminished. To process the camera input fast and efficiently, we will use one-shot convolutional neural network approach, based on state-of-the-art YOLO network. Such approach can process and provide gate detection and gate pose estimation at >60fps.
 
-The algorithmic we will use is SVO(Semi-Direct Visual Odometry). We will be able to have state estimations at rates grater than 20Hz in an NVIDIA Jetson Xavier. 
-Our state estimation approach will ....(PENDING)
+The algorithmic we will use as visual odometry is SVO(Semi-Direct Visual Odometry). SVO is an algorithm gathering advantages of direct and feature-based visual odometry. It extracts features ofr selected keyframes in a parallel thread, not all of them. Also it requires a sparse reconstruction of the environment. In that ways, the drone can estimate its state with fast speed and high accuracy. With the method, we will be able to have state estimations at rates grater than 20Hz in an NVIDIA Jetson Xavier.
 
 ### Motion Planning 
 
