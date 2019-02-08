@@ -71,7 +71,9 @@ Although both previous algorithms provide efficiency gains, the limited computat
 
 To reduce computation for trajectory generation, differential flatness theory can be used. Nonlinear dynamics systems could be linearized by selecting the appropriate flat output. If it is possible to find a set of state and input variables as function of output and its finite-order derivative, it is differential flatness system. 
 
-Then Trajectories can be designed in the flatness space by parameterizing the flatness outputs as a series of basis functions with time as the variable. For example, we can set basis functions as Bezier Curve, B-spline, or piecewise polynomials. This polynomials can satisfy the constraints and reduce difficulty of the problem.  And this problem is transformed into a nonlinear programming like quadratic programming
+Then Trajectories can be designed in the flatness space by parameterizing the flatness outputs as a series of basis functions with time as the variable. For example, we can set basis functions as Bezier Curve, B-spline, or piecewise polynomials. These polynomials can ensure enforceability and reduce difficulty of the problem. 
+
+Moreover, we should consider objective function and constraints. Objective function is for minimizing time or length of trajectory. Constraints function is like range of force or speed.   With objective function and constraints, problem is transformed into a nonlinear programming like quadratic programming. 
 
 ### Tracking Control 
 
@@ -98,7 +100,7 @@ In short, the availability of ground truth and flexibility to change the paramet
 
 ### Trajectory Generation
 
-It is easier to change environment in simulation than real world, so it is efficient to test whether UAV generates trajectory well in given environment. When the competition assumes that most gates are in same altitude and there is no aggressive change in path, it is not that difficulty for trajectory generation. But we change some environment such as gate altitude or angle of path that means level-up. Now then we can check our technical defect or limitation of drone. Also trajectory generation is highly relevant to tracking control so we can check trajectory generation and tracking control simultaneously.
+It is easier to change environment in simulation than real world, so it is efficient to test whether UAV generates trajectory well in given environment. When the competition assumes that most gates are in same altitude and there is no aggressive change in path, it is not that difficulty for trajectory generation. But we can change some environment such as gate altitude or angle of path that means level-up. Now then we can check our technical defect or limitation of drone. Also trajectory generation is highly relevant to tracking control so we can check trajectory generation and tracking control simultaneously.
 
 ### Tracking Control
 Regarding our control algorithms, the simulator, together with the ROS nodes provided for communication, will be exploited as a tool to asses its tracking performance. 
