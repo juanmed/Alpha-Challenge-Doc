@@ -37,6 +37,10 @@ After this computation is done, the drone will have enough knowledge of the chec
 
 The drone now can compute a trajectory that takes it from its current position to the next gate, in the minimum possible time. This is the planning challenge as must be done while flying. 
 
+### Trajectory Generation
+
+As UAV is nonlinear system retrained by nonholonomic constraints(underactuated characteristic) that have 4 inputs and 6 DOF, it would be challenge to generate trajectory for UAV. Trajectory needs to be dynamically feasible and satisfy conditions like minimum or maximum speed. Also considering nonlinear controller for tracking, time-optimal trajectory should be calculated on board in real-time.
+
 ### Tracking Control 
 
 If a successful trajectory was computed, the next challenge is to actually fly through that trajectory, or the tracking control challenge. This challenge also comes with its own computation challenge. At high speeds, aerodynamic effects, propeller flapping, vibration etc are of considerable magnitude and if ignored will lead to bad flying performance. The controller needs to compensate for this dynamics in order to track the computed trajectory, or otherwise will end up crashing or missing the next gate. This effects are however non-linear and challenges in modeling them and controlling the drone are outstanding. Moreover, large linear velocity (>10m/s) and fast rotational dynamics (>200degree/s) imply that the control inputs must be computed at very high speeds. Again, having enough on-board computational power and fast algorithms is imperative for success.
@@ -64,6 +68,12 @@ With a corrected estimation of the track layout and the state of the drone, a ti
 
 Although both previous algorithms provide efficiency gains, the limited computational power has to be solved. HOW TO SOLVE COMPUTATIONAL POWER. 
 
+### Trajectory Generation
+
+To reduce computation for trajectory generation, differential flatness theory can be used. Nonlinear dynamics systems could be linearized by selecting the appropriate flat output. If it is possible to find a set of state and input variables as function of output and its finite-order derivative, it is differential flatness system. 
+
+Then Trajectories can be designed in the flatness space by parameterizing the flatness outputs as a series of basis functions with time as the variable. For example, we can set basis functions as Bezier Curve, B-spline, or piecewise polynomials. This polynomials can satisfy the constraints and reduce difficulty of the problem.  And this problem is transformed into a nonlinear programming like quadratic programming
+
 ### Tracking Control 
 
 The trajectory tracking challenge will be solved by using a combination of 2 controllers that will be switched online: one differential-flatness based Model Predictive Controller -DFMPC- controller designed around a high-fidelity high-speed model, and a controller policy learned using reinforcement learning and DFMPC guided policy search -RL/DFMPC-. 
@@ -86,6 +96,10 @@ We exploit two advantages of simulation: First, unlike real settings, in a simul
 Regarding perception algorithms, the gate pose estimation, provided by the perception sub-system, will be compared against ground-thruth, which can be obtained in simulation. This serves as indispensable feedback to know the estimation error and improve our algorithms. Following, by modifying the environment and drone sensor’s parameters, the robustness of our algorithms can be assesed. On the environment side, by adding occlusions, various lighting, and changing object materials (a simple job in simulation) we get means to understand the weaknesses of our algorithms to changes in the environment and conditions of the gates to be detected. On the drone side, by adding sensor noise both in camera and (add other sensors) it will be possible to find cases in which our algorithm fail to provide gate pose estimations. Finally, by exploiting the very same camera and environment/drone modifications, we can get new training data with which the performance of our algorithms can be improved to overcome the weaknesses found.
 
 In short, the availability of ground truth and flexibility to change the parameters of the simulator, provides means to make fast iterations to improve our algorithm and extend our training data set to include exactly those settings in which our algorithm is weak.
+
+### Trajectory Generation
+
+It is easier to change environment in simulation than real world, so it is efficient to test whether UAV generates trajectory well in given environment. When the competition assumes that most gates are in same altitude and there is no aggressive change in path, it is not that difficulty for trajectory generation. But we change some environment such as gate altitude or angle of path that means level-up. Now then we can check our technical defect or limitation of drone. Also trajectory generation is highly relevant to tracking control so we can check trajectory generation and tracking control simultaneously.
 
 ### Tracking Control
 Regarding our control algorithms, the simulator, together with the ROS nodes provided for communication, will be exploited as a tool to asses its tracking performance. 
