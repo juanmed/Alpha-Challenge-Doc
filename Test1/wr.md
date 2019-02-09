@@ -4,8 +4,8 @@
 
 |Question No|Topic|Detail|
 |---|---|---|
-|1|State Estimation Challenges| Describe what are the technological challenges regarding state estimation|
-|2|Our State Estimation Approach|Describe what is our team's state estimation approach|
+|4|LINC Project| Describe how is RISE Lab involved in this. |
+|2||Describe what is our team's state estimation approach|
 |3|Simulator and control algorithm|Describe how simulator will be used in regard to control algorithm|
 |4|Details| Add details on research grants and industry collaboration|
 |5|All pending||
@@ -44,8 +44,6 @@ As UAV is nonlinear system retrained by nonholonomic constraints(underactuated c
 ### Tracking Control 
 
 If a successful trajectory was computed, the next challenge is to actually fly through that trajectory, or the tracking control challenge. This challenge also comes with its own computation challenge. At high speeds, aerodynamic effects, propeller flapping, vibration etc are of considerable magnitude and if ignored will lead to bad flying performance. The controller needs to compensate for this dynamics in order to track the computed trajectory, or otherwise will end up crashing or missing the next gate. This effects are however non-linear and challenges in modeling them and controlling the drone are outstanding. Moreover, large linear velocity (>10m/s) and fast rotational dynamics (>200degree/s) imply that the control inputs must be computed at very high speeds. Again, having enough on-board computational power and fast algorithms is imperative for success.
-
-
 
 
 ## 2) Describe your team’s planned technical approach to AlphaPilot. Why do you think your team could win with this approach?
@@ -100,7 +98,7 @@ In short, the availability of ground truth and flexibility to change the paramet
 
 ### Trajectory Generation
 
-It is easier to change environment in simulation than real world, so it is efficient to test whether UAV generates trajectory well in given environment. When the competition assumes that most gates are in same altitude and there is no aggressive change in path, it is not that difficulty for trajectory generation. But we can change some environment such as gate altitude or angle of path that means level-up. Now then we can check our technical defect or limitation of drone. Also trajectory generation is highly relevant to tracking control so we can check trajectory generation and tracking control simultaneously.
+State-of-the-art autonomous drone racing assumes gates are at very similar altitude and can be traversed in the horizontal direction. This makes construction of a testing environment a relatively simple task.  Also linear velocities have been slower compared to human drone racing. However Alpha Pilot Challenge  will require flying gates with very different poses, at high speeds. This includes very different gate heights. Setting a real environment for such testing is a challenge. We will use the simulator to create such testing environments. We will then be able to test our trajectory generation algorithm beyond the requirement in state-of-the-art autonomous drone racing. We will improve our algorithms to ensure trajectories make full use of the dynamic movement the drone is capable of, and making sure these trajectories can be tracked accurately enough by our controller.
 
 ### Tracking Control
 Regarding our control algorithms, the simulator, together with the ROS nodes provided for communication, will be exploited as a tool to asses its tracking performance. 
@@ -115,16 +113,9 @@ Still PENDING....
 
 We are a group of Mechanical Engineering Graduate School at Sungkyunkwan University. We are doing research on autonomous flying robots at the Robotics and Intelligent Systems Laboratory -RISE Lab- lead by Prof. Dr. Hyung Pil Moon. The autonomous flying robots area is a line of research in this lab. Thus, we count with access to a host of tools present in a robotics lab, and for drone research specifically: Motion Tracking Hardware and Software from Vicon Company, 4 different quadrotors and hexarotors with integrated sensors and computers for research, along with their tools and parts (batteries, monocular cameras, infrared sensors, GPS, barometers, etc), several Nvidia Jetson TX2 development boards, access to computers with Nvidia Titan X Pascal GPUs for neural network training, 
 
-Financing for travelling expenses, extra sw/hw tools, is secured by several research grants and industry-collaboration projects being developed internally by the lab. Among the research grants obtaines so far, BK+ Project and LINC Program have the greater importance. PENDING PROGRAM DETAILS
+Financing for travelling expenses, extra sw/hw tools, is secured by several research grants RISE Lab is part of, and industry-collaboration projects. Among the research grants obtained so far, BK21+ Project and LINC Project have the greater importance. BK21+ (Brain Korean 21 Plus) is a Korean Government program aimed to foster creativity in academic research in korean universities. SKK University and RISE Lab are part of this program from year 2017 to 2021 to support various research projects. The LINC Project (Leaders in Industry-University Collaboration) aims to foster industry-university collaboration to strengthen korean economy and support smart and bio industries.  
 
 On the industry-collaboration side, we are in talks with a South Korean and U.S. companies developing services with drones. IF WE HAVE SUPPORT FROM COMPANIES, WE MUST DISCLOSE IT. 
-
-
-SKKU
-BK+ Project
-LINC program
-Drone companies 
-USA Company
 
 ## 5) What do you see as the biggest challenges specific to your team that you will face during the AlphaPilot competition? What is your initial plan for overcoming this challenge? For example: missing skills, financial challenges, team cohesiveness, time commitment, etc. *
 
