@@ -18,7 +18,7 @@ In the context of Test 2, the objective is to recognize the flyable area in imag
 
 Although for Test 2 and ADRL gates are provided with clear, always visible fiducials, this is not the case in other racing contexts. Even the training dataset for Test 2 had initially fiducial marks and/or flyable areas that were blurred or not totally visible. In general, objects do not have clear fiducials marks for identification, and for racing in particular other drones and obstacles must be avoided even if they are not provided with them. In this sense, we opted for an algorithm that could be generalized to any object, without the need for fiducials or total visibility. This is a key characteristic of our algorithm and also the reason why we approached it using neural networks or NNs. NNs can be trained to detect, classify and estimate the pose of an object in short time and reasonable precision. One of such algorithms is the MIT-licensed singleshot6Dpose [3], which we discuss in Section X.
 
-To train NNs, large, accurately labeled datasets are required. We approached the creation of our training dataset using domain-randomized and photorealistic synthetic images, created in Unreal Engine 4. This approach has been proven in []. 
+To train NNs, large, accurately labeled datasets are required. Due to the approach we took, bounding box ground thruth is not enough, and ground thruth rotation, translation and bounding "cube" labels are necessary. We approached the creation of our training dataset using domain-randomized and photorealistic synthetic images, created in Unreal Engine 4. This approach has been proven in []. In total, 20,000 images with labels were generated, and the dataset is augmented with varying hue, noise, shape, jitter, saturation and exposure during training.
 
-## 
+## Detailed explanation
 
