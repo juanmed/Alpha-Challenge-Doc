@@ -22,3 +22,21 @@ To train NNs, large, accurately labeled datasets are required. Due to the approa
 
 ## Detailed explanation
 
+
+## YOLO DESCRIPTION
+
+The problem of predicting the 2D projection of the 3D bounding cube of an object is modelled as regression problem from image pixels to bounding cube coordinates and class probabilities. In this sense it drastically differs from pipelines in which feature extraction, proposal evaluation, classification, non-minimal supression and optimization form a complex pipeline with independent parts. The input image is seen once (not by regions or sliding windows) and predictions are obtained from a single neural network. This allows for high speed execution. 
+
+The input image is divided as an S x S grid (S = 7). ***Each cell will be responsibilized of predicting B bounding cubes (8 control points and centroid) and a confidence score (formally P(Object) * IOU) that represents the probability of there being an object and how accurate the bounding box is. Also, each cell is responsible of predicting C class probabilities. The position of the centroid is defined as an offset from the bounds of a particular cell in the grid.***. 
+
+## Network Design
+
+The network architecture is shown in Fig. 1. The initial convolutional layers extract features from the image (inspired in GoogLeNet) and the fully connected layers predict the output probabilites (P(Object) * IOU, P(Class|Object)) and control points. 
+
+## Loss Function
+
+The loss function the system optimizes for is the sum-squared error of the output.  
+
+
+
+
