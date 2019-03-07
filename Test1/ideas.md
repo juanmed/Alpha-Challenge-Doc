@@ -19,7 +19,8 @@ I make research in multi robot path planning. Just like with humans, I think rob
 
 ##SeungJun
 
-I like the Alpha Pilot AI challenge because its about speed. Current localization and mapping algorithms are proven for robots moving at limited speeds. But I find exciting to test them at the maximum speed a drone can fly. I foresee it is a challenging problem but also one that will require new techniques to be developed and thus advance the state of the art. This is what excites me.
+It is a very well known fact that vision is key for autonomous navigation. As tasks become more complex, good visual feedback is of paramount importance for success, be it humans or robots. Alpha Pilot AI Challenge is a great platform to explore this dicotomy, as emphasizes the computer vision problem: how to extract the most useful visual information in the least amount of time. The team with the best answer is likely to win. Humans or Drones?  I am participating as I am also looking forward to give a definitive answer to this fascinating question.
+
 
 ##JeongMing
 
