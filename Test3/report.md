@@ -9,7 +9,7 @@
 |Technical Description|||
 |Trajectory Generation|||
 |Trajectory Tracking: Control|||
-|State Estimation| Method| Eugene, are you using the derivative-free kalman filter from the differential flatness theory? using extended Kalman filter|
+|State Estimation| Method| Eugene, are you using the derivative-free kalman filter from the differential flatness theory? using extended Kalman filter. We are not using our inputs(T, M) at prediction of state, using values from IMU.|
 |State Estimation| Gate Pose Estimation| @Eugene, you now update drone's pose using gate pose and IR Marker. Is the inverse posible? Update gate pose from drone pose estimation? If not, need to delete that from Introduction   We can because we have rotation and translation vectors, but I don't know why we have to do it. Because we are not generating trajectory based on vision and predicting gates' positions. If it is necessary, please tell me.|
 |Results|||
 |Future Development|||
