@@ -18,9 +18,13 @@
 # Subtitle: Guidance, Navigation and Control algorithms submission for Alpha Pilot AI Challenge
 
 Author1: Yonghee Park, Team Member
+
 Author2: Eugene Auh, Team Member
+
 Author3: Juan Medrano, Team Member
+
 Author4: Jiho Cha, Team Member
+
 Author5: Hyungpil Moon, Team Captain*
 
 ## Introduction
