@@ -14,6 +14,14 @@
 |Results|||
 |Future Development|||
 |References|||
+# Title: RISE-S: FLYING FAST IN FLIGHTGOGGLES
+# Subtitle: Guidance, Navigation and Control algorithms submission for Alpha Pilot AI Challenge
+
+Author1: Yonghee Park, Team Member
+Author2: Eugene Auh, Team Member
+Author3: Juan Medrano, Team Member
+Author4: Jiho Cha, Team Member
+Author5: Hyungpil Moon, Team Captain*
 
 ## Introduction
 
@@ -56,8 +64,11 @@ A cascaded control architecture was followed: position control in the outer loop
 
 ## State Estimation
 
-We estimate the state of the drone with noisy IMU and camera, without any external sensors. That's why the vision process is important in the competition. With IR markers from the camera, we are using Effecient PnP algorithm and homography to calculate both, drone's state from gates and gates' state from the drone. There are perturbation on the gates' nominal position, so we cannot use it as a global marker directly. So we calculate IR marker's position from camera 2D image and the state of the drone. Then map the position of the gate on the global coordinate. After that, we can use the markers as known position on the inertial coordinate. With the information, we apply EPnP algorithm with global positions of gates and projected position of the markers. By repeating the processes, we update the pose of the drone and the global coordinate of the gates with perturbations step by step. Finally, mix the informations to IMU by EKF to estimate and compensate the state whenever.
+We estimate the state of the drone with noisy IMU and camera, without any external sensors. That's why the vision process is important in the competition. With IR markers from the camera, we are using Effecient PnP algorithm and homography to calculate both, drone's state from gates and gates' state from the drone. To handle the perturbation of the gates, we calculate IR marker's position from camera 2D image and the state of the drone. Then map the position of the gate on the global coordinate. After that, we can use the markers as known position on the inertial coordinate. With this information, we apply EPnP algorithm with global positions of gates and projected position of the markers. By repeating the processes, we update the pose of the drone and the global coordinate of the gates with perturbations step by step. Finally, mix the informations to IMU by EKF to estimate and compensate the state constantly.
 
+## Perception
+
+IR Marker information is leveraged in many ways. First as means for estimating the state of the drone, through gate and drone relative pose and nominal locations, albeit with error in position. Second, to estimate the real perturbation of gates through knowledge of the visible markerID, the nominal locations and drone's pose. This allows to construct a list of all estimated global gate positions. Third by feeding back the estimated gate to the trajectory planner, in order to correct the desired trajectory as new global gate positions are estimated. 
 
 ## Results
 
@@ -75,6 +86,7 @@ There are 3 main future features that will allow us to reach drone-racing speeds
 [2]Lee, T., Leok, M., & McClamroch, N. H. (2010). Geometric tracking control of a quadrotor UAV on SE(3). Proceedings of the IEEE Conference on Decision and Control, 5420–5425. https://doi.org/10.1109/CDC.2010.5717652
 [3]Scholarsarchive, B., Mclain, T., Beard, R. W., Mclain, T. ;, Beard, R. W. ;, Leishman, R. C. ;, Mclain, T. (2011). Differential Flatness Based Control of a Rotorcraft For Aggressive Maneuvers BYU ScholarsArchive Citation Differential Flatness Based Control of a Rotorcraft For Aggressive Maneuvers, (September), 2688–2693. 
 [4]Levine, S., & Koltun, V. (2013). Guided Policy Search - gps_full.pdf, 28. https://doi.org/10.1109/ICRA.2015.7138994
+[5] Mellinger, D., & Kumar, V. (2011). Minimum snap trajectory generation and control for quadrotors. Proceedings - IEEE International Conference on Robotics and Automation, 2520–2525. https://doi.org/10.1109/ICRA.2011.5980409
 
 
 
