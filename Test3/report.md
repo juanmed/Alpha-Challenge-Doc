@@ -56,7 +56,7 @@ A cascaded control architecture was followed: position control in the outer loop
 
 ## State Estimation
 
-
+We estimate the drons's state with IMU and camera, without any external sensors. That's why the vision process is important in the competition. From the vision, IR markers of the gates, we are using effecient PnP algorithm and homography to calculate both, drone's state from gates and gates' state from the drone. There are perturbation on the gates' nominal position, so we cannot use it as a global marker. We calculate IR marker's position from camera 2D image and the state of the drone. Then we map the position of the gate on the global coordinate. After that, we use the markers with known position on the inertial coordinate. With the information, we apply PnP algorithm with global positions of gates and projected position of the markers. That's how we calculate our drone's inertial pose. Finally, mix the informations to IMU by EKF to estimate state and predict even though there is no markers on the sight.
 
 
 ## Results
